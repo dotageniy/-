@@ -1,0 +1,170 @@
+@import url('https://fonts.googleapis.com/css2?family=Nunito:wght@400;500;600;700&family=Quicksand:wght@500;600;700&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  color-scheme: light;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  @apply font-display text-slate-800 antialiased;
+  background-image: radial-gradient(1400px 900px at 10% 0%, #f8f0ff 0%, #fdf2f8 40%, #eef2ff 70%, #f8fafc 100%);
+  background-attachment: fixed;
+  min-height: 100vh;
+  position: relative;
+  overflow-x: hidden;
+}
+
+body::before,
+body::after {
+  content: "";
+  position: fixed;
+  pointer-events: none;
+  inset: 0;
+  z-index: -2;
+}
+
+body::before {
+  background-image: radial-gradient(2px 2px at 20px 30px, rgba(251, 191, 36, 0.9), transparent),
+    radial-gradient(2px 2px at 90px 40px, rgba(244, 114, 182, 0.8), transparent),
+    radial-gradient(2px 2px at 150px 80px, rgba(196, 181, 253, 0.9), transparent),
+    radial-gradient(1.6px 1.6px at 210px 120px, rgba(251, 191, 36, 0.8), transparent),
+    radial-gradient(1.8px 1.8px at 280px 60px, rgba(244, 114, 182, 0.7), transparent),
+    radial-gradient(2px 2px at 340px 140px, rgba(196, 181, 253, 0.8), transparent);
+  background-repeat: repeat;
+  background-size: 380px 180px;
+  opacity: 0.5;
+  animation: starField 18s linear infinite;
+}
+
+body::after {
+  background-image: radial-gradient(600px 400px at 80% 10%, rgba(196, 181, 253, 0.18) 0%, transparent 70%),
+    radial-gradient(500px 320px at 15% 90%, rgba(244, 114, 182, 0.14) 0%, transparent 72%);
+  filter: blur(0px);
+  z-index: -3;
+}
+
+@keyframes starField {
+  from {
+    transform: translateY(0px);
+  }
+  to {
+    transform: translateY(-120px);
+  }
+}
+
+#root {
+  position: relative;
+  min-height: 100vh;
+}
+
+#root::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  background-image: radial-gradient(2px 2px at 60px 200px, rgba(251, 191, 36, 0.7), transparent),
+    radial-gradient(1.6px 1.6px at 420px 260px, rgba(244, 114, 182, 0.6), transparent),
+    radial-gradient(2px 2px at 680px 180px, rgba(196, 181, 253, 0.7), transparent);
+  background-size: 720px 320px;
+  background-repeat: repeat;
+  animation: twinkle 6s ease-in-out infinite;
+  opacity: 0.6;
+  z-index: -1;
+}
+
+@keyframes twinkle {
+  0%,
+  100% {
+    opacity: 0.25;
+    transform: scale(0.9);
+  }
+  50% {
+    opacity: 0.9;
+    transform: scale(1.05);
+  }
+}
+
+@keyframes float {
+  0%,
+  100% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(-12px);
+  }
+}
+
+@keyframes shimmer {
+  0% {
+    background-position: -200% 0;
+  }
+  100% {
+    background-position: 200% 0;
+  }
+}
+
+@keyframes pulseGlow {
+  0%,
+  100% {
+    box-shadow: 0 0 0 0 rgba(244, 114, 182, 0.22);
+  }
+  50% {
+    box-shadow: 0 0 0 14px rgba(196, 181, 253, 0.12);
+  }
+}
+
+/* Сказочные ползунки */
+.range-fairy {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 100%;
+  height: 0.6rem;
+  border-radius: 9999px;
+  background: linear-gradient(90deg, rgba(192, 132, 252, 0.4) 0%, rgba(244, 114, 182, 0.4) 100%);
+  position: relative;
+}
+
+.range-fairy::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+  height: 1.6rem;
+  width: 1.6rem;
+  border-radius: 9999px;
+  background: radial-gradient(circle, #fef3c7 0%, #fbbf24 55%, #f59e0b 100%);
+  border: 3px solid rgba(255, 255, 255, 0.95);
+  box-shadow: 0 0 0 6px rgba(251, 191, 36, 0.18), 0 10px 30px -12px rgba(245, 158, 11, 0.9);
+  cursor: pointer;
+  transition: transform 200ms ease, box-shadow 200ms ease;
+}
+
+.range-fairy::-webkit-slider-thumb:hover {
+  transform: scale(1.08);
+  box-shadow: 0 0 0 8px rgba(251, 191, 36, 0.22), 0 12px 40px -10px rgba(245, 158, 11, 0.95);
+}
+
+.range-fairy::-moz-range-thumb {
+  height: 1.6rem;
+  width: 1.6rem;
+  border-radius: 9999px;
+  background: radial-gradient(circle, #fef3c7 0%, #fbbf24 55%, #f59e0b 100%);
+  border: 3px solid rgba(255, 255, 255, 0.95);
+  box-shadow: 0 0 0 6px rgba(251, 191, 36, 0.18), 0 10px 30px -12px rgba(245, 158, 11, 0.9);
+  cursor: pointer;
+  transition: transform 200ms ease, box-shadow 200ms ease;
+}
+
+.range-fairy::-moz-range-thumb:hover {
+  transform: scale(1.08);
+}
+
+.range-fairy:focus-visible {
+  outline: none;
+  box-shadow: 0 0 0 4px rgba(196, 181, 253, 0.4);
+}
